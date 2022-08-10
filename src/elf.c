@@ -118,14 +118,32 @@ typedef struct elf_st64_s {
 typedef struct elf_r32_s {
 	uint32_t offset;
 	uint32_t info;
-	uint32_t addend;
 } elf_r32_t;
 
 typedef struct elf_r64_s {
 	uint64_t offset;
 	uint64_t info;
-	uint64_t addend;
 } elf_r64_t;
+
+typedef struct elf_ra32_s {
+	uint32_t offset;
+	uint32_t info;
+	uint32_t addend;
+} elf_ra32_t;
+
+typedef struct elf_ra64_s {
+	uint64_t offset;
+	uint64_t info;
+	uint64_t addend;
+} elf_ra64_t;
+
+uint64_t elf_copy(uint8_t* b, uint64_t bn, void* v, uint64_t an) {
+	uint8_t* a = v;
+	for (uint64_t i = 0; i < an; i++) {
+		b[bn + i] = a[i];
+	}
+	return an + bn;
+}
 
 void elf_write(int8_t* path, uint8_t cls, void* ehp, void* php, void* shp, uint8_t* bits, uint64_t bn) {
 	
@@ -176,7 +194,7 @@ void elf_write(int8_t* path, uint8_t cls, void* ehp, void* php, void* shp, uint8
 		}
 		
 		for (uint32_t i = 0; i < bn; i++) {
-			fprintf(f, "%c", bits[i]); //progbits
+			fprintf(f, "%c", bits[i]);
 		}
 		
 		fclose(f);
@@ -228,8 +246,8 @@ void elf_write(int8_t* path, uint8_t cls, void* ehp, void* php, void* shp, uint8
 			fprintf(f, "%c%c%c%c%c%c%c%c", (int8_t) (sh[i].entsize), (int8_t) (sh[i].entsize >> 8), (int8_t) (sh[i].entsize >> 16), (int8_t) (sh[i].entsize >> 24), (int8_t) (sh[i].entsize >> 32), (int8_t) (sh[i].entsize >> 40), (int8_t) (sh[i].entsize >> 48), (int8_t) (sh[i].entsize >> 56));
 		}
 		
-		for (uint32_t i = 0; i < bn; i++) {
-			fprintf(f, "%c", bits[i]); //progbits
+		for (uint64_t i = 0; i < bn; i++) {
+			fprintf(f, "%c", bits[i]);
 		}
 		
 		fclose(f);

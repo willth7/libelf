@@ -137,42 +137,42 @@ void elf_write(int8_t* path, uint8_t cls, void* ehp, void* php, void* shp, uint8
 		FILE* f = fopen(path, "w");
 		
 		fprintf(f, "%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c", 127, 'E', 'L', 'F', 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0); //ident
-		fprintf(f, "%c%c", eh->type, eh->type >> 8);
-		fprintf(f, "%c%c", eh->machine, eh->machine >> 8);
-		fprintf(f, "%c%c%c%c", eh->version, eh->version >> 8, eh->version >> 16, eh->version >> 24);
-		fprintf(f, "%c%c%c%c", eh->entry, eh->entry >> 8, eh->entry >> 16, eh->entry >> 24);
-		fprintf(f, "%c%c%c%c", eh->phoff, eh->phoff >> 8, eh->phoff >> 16, eh->phoff >> 24);
-		fprintf(f, "%c%c%c%c", eh->shoff, eh->shoff >> 8, eh->shoff >> 16, eh->shoff >> 24);
-		fprintf(f, "%c%c%c%c", eh->flags, eh->flags >> 8, eh->flags >> 16, eh->flags >> 24);
-		fprintf(f, "%c%c", eh->ehsize, eh->ehsize >> 8);
-		fprintf(f, "%c%c", eh->phentsize, eh->phentsize >> 8);
-		fprintf(f, "%c%c", eh->phnum, eh->phnum >> 8);
-		fprintf(f, "%c%c", eh->shentsize, eh->shentsize >> 8);
-		fprintf(f, "%c%c", eh->shnum, eh->shnum >> 8);
-		fprintf(f, "%c%c", eh->shstrndx, eh->shstrndx >> 8);
+		fprintf(f, "%c%c", (int8_t) (eh->type), (int8_t) (eh->type >> 8));
+		fprintf(f, "%c%c", (int8_t) (eh->machine), (int8_t) (eh->machine >> 8));
+		fprintf(f, "%c%c%c%c", (int8_t) (eh->version), (int8_t) (eh->version >> 8), (int8_t) (eh->version >> 16), (int8_t) (eh->version >> 24));
+		fprintf(f, "%c%c%c%c", (int8_t) (eh->entry), (int8_t) (eh->entry >> 8), (int8_t) (eh->entry >> 16), (int8_t) (eh->entry >> 24));
+		fprintf(f, "%c%c%c%c", (int8_t) (eh->phoff), (int8_t) (eh->phoff >> 8), (int8_t) (eh->phoff >> 16), (int8_t) (eh->phoff >> 24));
+		fprintf(f, "%c%c%c%c", (int8_t) (eh->shoff), (int8_t) (eh->shoff >> 8), (int8_t) (eh->shoff >> 16), (int8_t) (eh->shoff >> 24));
+		fprintf(f, "%c%c%c%c", (int8_t) (eh->flags), (int8_t) (eh->flags >> 8), (int8_t) (eh->flags >> 16), (int8_t) (eh->flags >> 24));
+		fprintf(f, "%c%c", (int8_t) (eh->ehsize), (int8_t) (eh->ehsize >> 8));
+		fprintf(f, "%c%c", (int8_t) (eh->phentsize), (int8_t) (eh->phentsize >> 8));
+		fprintf(f, "%c%c", (int8_t) (eh->phnum), (int8_t) (eh->phnum >> 8));
+		fprintf(f, "%c%c", (int8_t) (eh->shentsize), (int8_t) (eh->shentsize >> 8));
+		fprintf(f, "%c%c", (int8_t) (eh->shnum), (int8_t) (eh->shnum >> 8));
+		fprintf(f, "%c%c", (int8_t) (eh->shstrndx), (int8_t) (eh->shstrndx >> 8));
 		
 		for (uint32_t i = 0; i < eh->phnum; i++) {
-			fprintf(f, "%c%c%c%c", ph[i].type, ph[i].type >> 8, ph[i].type >> 16, ph[i].type >> 24);
-			fprintf(f, "%c%c%c%c", ph[i].offset, ph[i].offset >> 8, ph[i].offset >> 16, ph[i].offset >> 24);
-			fprintf(f, "%c%c%c%c", ph[i].vaddr, ph[i].vaddr >> 8, ph[i].vaddr >> 16, ph[i].vaddr >> 24);
-			fprintf(f, "%c%c%c%c", ph[i].paddr, ph[i].paddr >> 8, ph[i].paddr >> 16, ph[i].paddr >> 24);
-			fprintf(f, "%c%c%c%c", ph[i].filesz, ph[i].filesz >> 8, ph[i].filesz >> 16, ph[i].filesz >> 24);
-			fprintf(f, "%c%c%c%c", ph[i].memsz, ph[i].memsz >> 8, ph[i].memsz >> 16, ph[i].memsz >> 24);
-			fprintf(f, "%c%c%c%c", ph[i].flags, ph[i].flags >> 8, ph[i].flags >> 16, ph[i].flags >> 24);
-			fprintf(f, "%c%c%c%c", ph[i].align, ph[i].align >> 8, ph[i].align >> 16, ph[i].align >> 24);
+			fprintf(f, "%c%c%c%c", (int8_t) (ph[i].type), (int8_t) (ph[i].type >> 8), (int8_t) (ph[i].type >> 16), (int8_t) (ph[i].type >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (ph[i].offset), (int8_t) (ph[i].offset >> 8), (int8_t) (ph[i].offset >> 16), (int8_t) (ph[i].offset >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (ph[i].vaddr), (int8_t) (ph[i].vaddr >> 8), (int8_t) (ph[i].vaddr >> 16), (int8_t) (ph[i].vaddr >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (ph[i].paddr), (int8_t) (ph[i].paddr >> 8), (int8_t) (ph[i].paddr >> 16), (int8_t) (ph[i].paddr >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (ph[i].filesz), (int8_t) (ph[i].filesz >> 8), (int8_t) (ph[i].filesz >> 16), (int8_t) (ph[i].filesz >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (ph[i].memsz), (int8_t) (ph[i].memsz >> 8), (int8_t) (ph[i].memsz >> 16), (int8_t) (ph[i].memsz >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (ph[i].flags), (int8_t) (ph[i].flags >> 8), (int8_t) (ph[i].flags >> 16), (int8_t) (ph[i].flags >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (ph[i].align), (int8_t) (ph[i].align >> 8), (int8_t) (ph[i].align >> 16), (int8_t) (ph[i].align >> 24));
 		}
 		
 		for (uint32_t i = 0; i < eh->shnum; i++) {
-			fprintf(f, "%c%c%c%c", sh[i].name, sh[i].name >> 8, sh[i].name >> 16, sh[i].name >> 24);
-			fprintf(f, "%c%c%c%c", sh[i].type, sh[i].type >> 8, sh[i].type >> 16, sh[i].type >> 24);
-			fprintf(f, "%c%c%c%c", sh[i].flags, sh[i].flags >> 8, sh[i].flags >> 16, sh[i].flags >> 24);
-			fprintf(f, "%c%c%c%c", sh[i].addr, sh[i].addr >> 8, sh[i].addr >> 16, sh[i].addr >> 24);
-			fprintf(f, "%c%c%c%c", sh[i].offset, sh[i].offset >> 8, sh[i].offset >> 16, sh[i].offset >> 24);
-			fprintf(f, "%c%c%c%c", sh[i].size, sh[i].size >> 8, sh[i].size >> 16, sh[i].size >> 24);
-			fprintf(f, "%c%c%c%c", sh[i].link, sh[i].link >> 8, sh[i].link >> 16, sh[i].link >> 24);
-			fprintf(f, "%c%c%c%c", sh[i].info, sh[i].info >> 8, sh[i].info >> 16, sh[i].info >> 24);
-			fprintf(f, "%c%c%c%c", sh[i].addralign, sh[i].addralign >> 8, sh[i].addralign >> 16, sh[i].addralign >> 24);
-			fprintf(f, "%c%c%c%c", sh[i].entsize, sh[i].entsize >> 8, sh[i].entsize >> 16, sh[i].entsize >> 24);
+			fprintf(f, "%c%c%c%c", (int8_t) (sh[i].name), (int8_t) (sh[i].name >> 8), (int8_t) (sh[i].name >> 16), (int8_t) (sh[i].name >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (sh[i].type), (int8_t) (sh[i].type >> 8), (int8_t) (sh[i].type >> 16), (int8_t) (sh[i].type >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (sh[i].flags), (int8_t) (sh[i].flags >> 8), (int8_t) (sh[i].flags >> 16), (int8_t) (sh[i].flags >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (sh[i].addr), (int8_t) (sh[i].addr >> 8), (int8_t) (sh[i].addr >> 16), (int8_t) (sh[i].addr >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (sh[i].offset), (int8_t) (sh[i].offset >> 8), (int8_t) (sh[i].offset >> 16), (int8_t) (sh[i].offset >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (sh[i].size), (int8_t) (sh[i].size >> 8), (int8_t) (sh[i].size >> 16), (int8_t) (sh[i].size >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (sh[i].link), (int8_t) (sh[i].link >> 8), (int8_t) (sh[i].link >> 16), (int8_t) (sh[i].link >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (sh[i].info), (int8_t) (sh[i].info >> 8), (int8_t) (sh[i].info >> 16), (int8_t) (sh[i].info >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (sh[i].addralign), (int8_t) (sh[i].addralign >> 8), (int8_t) (sh[i].addralign >> 16), (int8_t) (sh[i].addralign >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (sh[i].entsize), (int8_t) (sh[i].entsize >> 8), (int8_t) (sh[i].entsize >> 16), (int8_t) (sh[i].entsize >> 24));
 		}
 		
 		for (uint32_t i = 0; i < bn; i++) {
@@ -190,42 +190,42 @@ void elf_write(int8_t* path, uint8_t cls, void* ehp, void* php, void* shp, uint8
 		FILE* f = fopen(path, "w");
 		
 		fprintf(f, "%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c", 127, 'E', 'L', 'F', 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0); //ident
-		fprintf(f, "%c%c", eh->type, eh->type >> 8);
-		fprintf(f, "%c%c", eh->machine, eh->machine >> 8);
-		fprintf(f, "%c%c%c%c", eh->version, eh->version >> 8, eh->version >> 16, eh->version >> 24);
-		fprintf(f, "%c%c%c%c%c%c%c%c", eh->entry, eh->entry >> 8, eh->entry >> 16, eh->entry >> 24, eh->entry >> 32, eh->entry >> 40, eh->entry >> 48, eh->entry >> 56);
-		fprintf(f, "%c%c%c%c%c%c%c%c", eh->phoff, eh->phoff >> 8, eh->phoff >> 16, eh->phoff >> 24, eh->phoff >> 32, eh->phoff >> 40, eh->phoff >> 48, eh->phoff >> 56);
-		fprintf(f, "%c%c%c%c%c%c%c%c", eh->shoff, eh->shoff >> 8, eh->shoff >> 16, eh->shoff >> 24, eh->shoff >> 32, eh->shoff >> 40, eh->shoff >> 48, eh->shoff >> 56);
-		fprintf(f, "%c%c%c%c", eh->flags, eh->flags >> 8, eh->flags >> 16, eh->flags >> 24);
-		fprintf(f, "%c%c", eh->ehsize, eh->ehsize >> 8);
-		fprintf(f, "%c%c", eh->phentsize, eh->phentsize >> 8);
-		fprintf(f, "%c%c", eh->phnum, eh->phnum >> 8);
-		fprintf(f, "%c%c", eh->shentsize, eh->shentsize >> 8);
-		fprintf(f, "%c%c", eh->shnum, eh->shnum >> 8);
-		fprintf(f, "%c%c", eh->shstrndx, eh->shstrndx >> 8);
+		fprintf(f, "%c%c", (int8_t) (eh->type), (int8_t) (eh->type >> 8));
+		fprintf(f, "%c%c", (int8_t) (eh->machine), (int8_t) (eh->machine >> 8));
+		fprintf(f, "%c%c%c%c", (int8_t) (eh->version), (int8_t) (eh->version >> 8), (int8_t) (eh->version >> 16), (int8_t) (eh->version >> 24));
+		fprintf(f, "%c%c%c%c%c%c%c%c", (int8_t) (eh->entry), (int8_t) (eh->entry >> 8), (int8_t) (eh->entry >> 16), (int8_t) (eh->entry >> 24), (int8_t) (eh->entry >> 32), (int8_t) (eh->entry >> 40), (int8_t) (eh->entry >> 48), (int8_t) (eh->entry >> 56));
+		fprintf(f, "%c%c%c%c%c%c%c%c", (int8_t) (eh->phoff), (int8_t) (eh->phoff >> 8), (int8_t) (eh->phoff >> 16), (int8_t) (eh->phoff >> 24), (int8_t) (eh->phoff >> 32), (int8_t) (eh->phoff >> 40), (int8_t) (eh->phoff >> 48), (int8_t) (eh->phoff >> 56));
+		fprintf(f, "%c%c%c%c%c%c%c%c", (int8_t) (eh->shoff), (int8_t) (eh->shoff >> 8), (int8_t) (eh->shoff >> 16), (int8_t) (eh->shoff >> 24), (int8_t) (eh->shoff >> 32), (int8_t) (eh->shoff >> 40), (int8_t) (eh->shoff >> 48), (int8_t) (eh->shoff >> 56));
+		fprintf(f, "%c%c%c%c", (int8_t) (eh->flags), (int8_t) (eh->flags >> 8), (int8_t) (eh->flags >> 16), (int8_t) (eh->flags >> 24));
+		fprintf(f, "%c%c", (int8_t) (eh->ehsize), (int8_t) (eh->ehsize >> 8));
+		fprintf(f, "%c%c", (int8_t) (eh->phentsize), (int8_t) (eh->phentsize >> 8));
+		fprintf(f, "%c%c", (int8_t) (eh->phnum), (int8_t) (eh->phnum >> 8));
+		fprintf(f, "%c%c", (int8_t) (eh->shentsize), (int8_t) (eh->shentsize >> 8));
+		fprintf(f, "%c%c", (int8_t) (eh->shnum), (int8_t) (eh->shnum >> 8));
+		fprintf(f, "%c%c", (int8_t) (eh->shstrndx), (int8_t) (eh->shstrndx >> 8));
 		
 		for (uint32_t i = 0; i < eh->phnum; i++) {
-			fprintf(f, "%c%c%c%c", ph[i].type, ph[i].type >> 8, ph[i].type >> 16, ph[i].type >> 24);
-			fprintf(f, "%c%c%c%c", ph[i].flags, ph[i].flags >> 8, ph[i].flags >> 16, ph[i].flags >> 24);
-			fprintf(f, "%c%c%c%c%c%c%c%c", ph[i].offset, ph[i].offset >> 8, ph[i].offset >> 16, ph[i].offset >> 24, ph[i].offset >> 32, ph[i].offset >> 40, ph[i].offset >> 48, ph[i].offset >> 56);
-			fprintf(f, "%c%c%c%c%c%c%c%c", ph[i].vaddr, ph[i].vaddr >> 8, ph[i].vaddr >> 16, ph[i].vaddr >> 24, ph[i].vaddr >> 32, ph[i].vaddr >> 40, ph[i].vaddr >> 48, ph[i].vaddr >> 56);
-			fprintf(f, "%c%c%c%c%c%c%c%c", ph[i].paddr, ph[i].paddr >> 8, ph[i].paddr >> 16, ph[i].paddr >> 24, ph[i].paddr >> 32, ph[i].paddr >> 40, ph[i].paddr >> 48, ph[i].paddr >> 56);
-			fprintf(f, "%c%c%c%c%c%c%c%c", ph[i].filesz, ph[i].filesz >> 8, ph[i].filesz >> 16, ph[i].filesz >> 24, ph[i].filesz >> 32, ph[i].filesz >> 40, ph[i].filesz >> 48, ph[i].filesz >> 56);
-			fprintf(f, "%c%c%c%c%c%c%c%c", ph[i].memsz, ph[i].memsz >> 8, ph[i].memsz >> 16, ph[i].memsz >> 24, ph[i].memsz >> 32, ph[i].memsz >> 40, ph[i].memsz >> 48, ph[i].memsz >> 56);
-			fprintf(f, "%c%c%c%c%c%c%c%c", ph[i].align, ph[i].align >> 8, ph[i].align >> 16, ph[i].align >> 24, ph[i].align >> 32, ph[i].align >> 40, ph[i].align >> 48, ph[i].align >> 56);
+			fprintf(f, "%c%c%c%c", (int8_t) (ph[i].type), (int8_t) (ph[i].type >> 8), (int8_t) (ph[i].type >> 16), (int8_t) (ph[i].type >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (ph[i].flags), (int8_t) (ph[i].flags >> 8), (int8_t) (ph[i].flags >> 16), (int8_t) (ph[i].flags >> 24));
+			fprintf(f, "%c%c%c%c%c%c%c%c", (int8_t) (ph[i].offset), (int8_t) (ph[i].offset >> 8), (int8_t) (ph[i].offset >> 16), (int8_t) (ph[i].offset >> 24), (int8_t) (ph[i].offset >> 32), (int8_t) (ph[i].offset >> 40), (int8_t) (ph[i].offset >> 48), (int8_t) (ph[i].offset >> 56));
+			fprintf(f, "%c%c%c%c%c%c%c%c", (int8_t) (ph[i].vaddr), (int8_t) (ph[i].vaddr >> 8), (int8_t) (ph[i].vaddr >> 16), (int8_t) (ph[i].vaddr >> 24), (int8_t) (ph[i].vaddr >> 32), (int8_t) (ph[i].vaddr >> 40), (int8_t) (ph[i].vaddr >> 48), (int8_t) (ph[i].vaddr >> 56));
+			fprintf(f, "%c%c%c%c%c%c%c%c", (int8_t) (ph[i].paddr), (int8_t) (ph[i].paddr >> 8), (int8_t) (ph[i].paddr >> 16), (int8_t) (ph[i].paddr >> 24), (int8_t) (ph[i].paddr >> 32), (int8_t) (ph[i].paddr >> 40), (int8_t) (ph[i].paddr >> 48), (int8_t) (ph[i].paddr >> 56));
+			fprintf(f, "%c%c%c%c%c%c%c%c", (int8_t) (ph[i].filesz), (int8_t) (ph[i].filesz >> 8), (int8_t) (ph[i].filesz >> 16), (int8_t) (ph[i].filesz >> 24), (int8_t) (ph[i].filesz >> 32), (int8_t) (ph[i].filesz >> 40), (int8_t) (ph[i].filesz >> 48), (int8_t) (ph[i].filesz >> 56));
+			fprintf(f, "%c%c%c%c%c%c%c%c", (int8_t) (ph[i].memsz), (int8_t) (ph[i].memsz >> 8), (int8_t) (ph[i].memsz >> 16), (int8_t) (ph[i].memsz >> 24), (int8_t) (ph[i].memsz >> 32), (int8_t) (ph[i].memsz >> 40), (int8_t) (ph[i].memsz >> 48), (int8_t) (ph[i].memsz >> 56));
+			fprintf(f, "%c%c%c%c%c%c%c%c", (int8_t) (ph[i].align), (int8_t) (ph[i].align >> 8), (int8_t) (ph[i].align >> 16), (int8_t) (ph[i].align >> 24), (int8_t) (ph[i].align >> 32), (int8_t) (ph[i].align >> 40), (int8_t) (ph[i].align >> 48), (int8_t) (ph[i].align >> 56));
 		}
 		
 		for (uint32_t i = 0; i < eh->shnum; i++) {
-			fprintf(f, "%c%c%c%c", sh[i].name, sh[i].name >> 8, sh[i].name >> 16, sh[i].name >> 24);
-			fprintf(f, "%c%c%c%c", sh[i].type, sh[i].type >> 8, sh[i].type >> 16, sh[i].type >> 24);
-			fprintf(f, "%c%c%c%c%c%c%c%c", sh[i].flags, sh[i].flags >> 8, sh[i].flags >> 16, sh[i].flags >> 24, sh[i].flags >> 32, sh[i].flags >> 40, sh[i].flags >> 48, sh[i].flags >> 56);
-			fprintf(f, "%c%c%c%c%c%c%c%c", sh[i].addr, sh[i].addr >> 8, sh[i].addr >> 16, sh[i].addr >> 24, sh[i].addr >> 32, sh[i].addr >> 40, sh[i].addr >> 48, sh[i].addr >> 56);
-			fprintf(f, "%c%c%c%c%c%c%c%c", sh[i].offset, sh[i].offset >> 8, sh[i].offset >> 16, sh[i].offset >> 24, sh[i].offset >> 32, sh[i].offset >> 40, sh[i].offset >> 48, sh[i].offset >> 56);
-			fprintf(f, "%c%c%c%c%c%c%c%c", sh[i].size, sh[i].size >> 8, sh[i].size >> 16, sh[i].size >> 24, sh[i].size >> 32, sh[i].size >> 40, sh[i].size >> 48, sh[i].size >> 56);
-			fprintf(f, "%c%c%c%c", sh[i].link, sh[i].link >> 8, sh[i].link >> 16, sh[i].link >> 24);
-			fprintf(f, "%c%c%c%c", sh[i].info, sh[i].info >> 8, sh[i].info >> 16, sh[i].info >> 24);
-			fprintf(f, "%c%c%c%c%c%c%c%c", sh[i].addralign, sh[i].addralign >> 8, sh[i].addralign >> 16, sh[i].addralign >> 24, sh[i].addralign >> 32, sh[i].addralign >> 40, sh[i].addralign >> 48, sh[i].addralign >> 56);
-			fprintf(f, "%c%c%c%c%c%c%c%c", sh[i].entsize, sh[i].entsize >> 8, sh[i].entsize >> 16, sh[i].entsize >> 24, sh[i].entsize >> 32, sh[i].entsize >> 40, sh[i].entsize >> 48, sh[i].entsize >> 56);
+			fprintf(f, "%c%c%c%c", (int8_t) (sh[i].name), (int8_t) (sh[i].name >> 8), (int8_t) (sh[i].name >> 16), (int8_t) (sh[i].name >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (sh[i].type), (int8_t) (sh[i].type >> 8), (int8_t) (sh[i].type >> 16), (int8_t) (sh[i].type >> 24));
+			fprintf(f, "%c%c%c%c%c%c%c%c", (int8_t) (sh[i].flags), (int8_t) (sh[i].flags >> 8), (int8_t) (sh[i].flags >> 16), (int8_t) (sh[i].flags >> 24), (int8_t) (sh[i].flags >> 32), (int8_t) (sh[i].flags >> 40), (int8_t) (sh[i].flags >> 48), (int8_t) (sh[i].flags >> 56));
+			fprintf(f, "%c%c%c%c%c%c%c%c", (int8_t) (sh[i].addr), (int8_t) (sh[i].addr >> 8), (int8_t) (sh[i].addr >> 16), (int8_t) (sh[i].addr >> 24), (int8_t) (sh[i].addr >> 32), (int8_t) (sh[i].addr >> 40), (int8_t) (sh[i].addr >> 48), (int8_t) (sh[i].addr >> 56));
+			fprintf(f, "%c%c%c%c%c%c%c%c", (int8_t) (sh[i].offset), (int8_t) (sh[i].offset >> 8), (int8_t) (sh[i].offset >> 16), (int8_t) (sh[i].offset >> 24), (int8_t) (sh[i].offset >> 32), (int8_t) (sh[i].offset >> 40), (int8_t) (sh[i].offset >> 48), (int8_t) (sh[i].offset >> 56));
+			fprintf(f, "%c%c%c%c%c%c%c%c", (int8_t) (sh[i].size), (int8_t) (sh[i].size >> 8), (int8_t) (sh[i].size >> 16), (int8_t) (sh[i].size >> 24), (int8_t) (sh[i].size >> 32), (int8_t) (sh[i].size >> 40), (int8_t) (sh[i].size >> 48), (int8_t) (sh[i].size >> 56));
+			fprintf(f, "%c%c%c%c", (int8_t) (sh[i].link), (int8_t) (sh[i].link >> 8), (int8_t) (sh[i].link >> 16), (int8_t) (sh[i].link >> 24));
+			fprintf(f, "%c%c%c%c", (int8_t) (sh[i].info), (int8_t) (sh[i].info >> 8), (int8_t) (sh[i].info >> 16), (int8_t) (sh[i].info >> 24));
+			fprintf(f, "%c%c%c%c%c%c%c%c", (int8_t) (sh[i].addralign), (int8_t) (sh[i].addralign >> 8), (int8_t) (sh[i].addralign >> 16), (int8_t) (sh[i].addralign >> 24), (int8_t) (sh[i].addralign >> 32), (int8_t) (sh[i].addralign >> 40), (int8_t) (sh[i].addralign >> 48), (int8_t) (sh[i].addralign >> 56));
+			fprintf(f, "%c%c%c%c%c%c%c%c", (int8_t) (sh[i].entsize), (int8_t) (sh[i].entsize >> 8), (int8_t) (sh[i].entsize >> 16), (int8_t) (sh[i].entsize >> 24), (int8_t) (sh[i].entsize >> 32), (int8_t) (sh[i].entsize >> 40), (int8_t) (sh[i].entsize >> 48), (int8_t) (sh[i].entsize >> 56));
 		}
 		
 		for (uint32_t i = 0; i < bn; i++) {

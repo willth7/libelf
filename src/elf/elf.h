@@ -55,7 +55,7 @@ typedef struct elf_p32_s {
 	uint32_t filesz;
 	uint32_t memsz;
 	uint32_t flags;
-	uint64_t align;
+	uint32_t align;
 } elf_p32_t;
 
 typedef struct elf_p64_s {
@@ -125,6 +125,6 @@ typedef struct elf_r64_s {
 	uint64_t addend;
 } elf_r64_t;
 
-void elf_write(int8_t*, void*, void*, uint8_t*, uint64_t, void*);
+void elf_write(int8_t*, uint8_t, void*, void*, void*, uint8_t*, uint64_t);
 
 #endif

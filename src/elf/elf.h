@@ -137,6 +137,8 @@ typedef struct elf_ra64_s {
 
 uint64_t elf_copy(uint8_t*, uint64_t, void*, uint64_t);
 
-void elf_write(int8_t*, uint8_t, void*, void*, void*, uint8_t*, uint64_t);
+uint64_t elf_loct(uint8_t*, uint64_t, void*, uint64_t);
+
+uint8_t* elf_write(int8_t*, uint8_t, void*, void*, void*, uint8_t*, uint64_t);
 
 #endif
